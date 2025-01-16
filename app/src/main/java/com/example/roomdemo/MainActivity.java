@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.roomdemo.test1.TestActivity1;
+import com.example.roomdemo.test2.TestActivity2;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -19,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTest1(View v) {
         startActivity(new Intent(this, TestActivity1.class));
+    }
+
+    /**
+     * RecyclerView+PagerSnapHelper 小视频界面
+     */
+    public void onTest2(View v) {
+        startActivity(new Intent(this, TestActivity2.class));
     }
 
 

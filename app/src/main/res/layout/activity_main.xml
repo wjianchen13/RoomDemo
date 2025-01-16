@@ -22,7 +22,17 @@
         android:textAllCaps="false"
         android:gravity="center"
         android:onClick="onTest1"
-        android:text="自定义View实现"
+        android:text="自定义View实现 界面不随手势滑动"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:onClick="onTest2"
+        android:text="RecyclerView+PagerSnapHelper 小视频界面"
         />
 
 </LinearLayout>

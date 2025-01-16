@@ -3,6 +3,18 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven("http://maven.aliyun.com/nexus/content/groups/public/") {
+            isAllowInsecureProtocol=true
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/google/")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/public/")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/gradle-plugin/")
+        }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +22,18 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("http://maven.aliyun.com/nexus/content/groups/public/") {
+            isAllowInsecureProtocol=true
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/google/")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/public/")
+        }
+        maven {
+            setUrl("https://maven.aliyun.com/repository/gradle-plugin/")
+        }
     }
 }
 

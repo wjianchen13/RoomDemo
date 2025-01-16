@@ -2,7 +2,50 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- adjust -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- linkme一键登录补充权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 银联需要的权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" /> <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 云信权限########################################################声明 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" /> <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+    <uses-permission android:name="android.permission.NFC" /> <!-- ShareSdk权限申请 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" /> <!-- 重复声明 ⬇ ️ -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" /> <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- snapchat login -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.REORDER_TASKS" /> <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="${applicationId}.permission.RECEIVE_MSG" /> <!-- 云信权限########################################################声明 -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" /> <!-- 适配android 13 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" /><!--Android 14 引入了所选照片访问权限，可让用户授予应用对其库中特定图片和视频的访问权限，而不是授予对给定类型的所有媒体内容的访问权限。-->
+    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- LinkMe SDK需要权限 请务必添加该权限，用户更流畅的跳转 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" /> <!-- JPush极光推送 Optional. Required for location feature -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 图片选择器 PictureSelector  Android 13版本适配，细化存储权限 -->
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" /> <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <permission android:name="${applicationId}.permission.RECEIVE_MSG" android:protectionLevel="signature" /> <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+
+
     <application
+        android:usesCleartextTraffic="true"
+        android:name=".BaseApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,7 +66,7 @@
         </activity>
 
         <activity android:name=".test1.TestActivity1" />
-
+        <activity android:name=".test2.TestActivity2" />
 
     </application>
 
