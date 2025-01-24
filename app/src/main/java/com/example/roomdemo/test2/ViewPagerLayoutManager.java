@@ -82,6 +82,8 @@ public class ViewPagerLayoutManager extends LinearLayoutManager {
     @Override
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
         this.mDrift = dy;
+        if(mOnViewPagerListener != null)
+            mOnViewPagerListener.scrollVerticallyBy(dy, recycler, state);
         return super.scrollVerticallyBy(dy, recycler, state);
     }
 

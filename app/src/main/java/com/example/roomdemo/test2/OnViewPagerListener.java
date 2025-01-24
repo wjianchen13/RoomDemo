@@ -1,6 +1,7 @@
 package com.example.roomdemo.test2;
 
 
+import androidx.recyclerview.widget.RecyclerView;
 
 public interface OnViewPagerListener {
 
@@ -13,5 +14,5 @@ public interface OnViewPagerListener {
     /*选中的监听以及判断是否滑动到底部*/
     void onPageSelected(int position, boolean isBottom);
 
-
+    void scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state);
 }

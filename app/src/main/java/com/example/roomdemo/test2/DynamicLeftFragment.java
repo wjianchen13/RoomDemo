@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roomdemo.R;
+import com.example.roomdemo.Utils;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.constant.RefreshState;
@@ -380,9 +381,18 @@ public class DynamicLeftFragment extends BaseFragment implements View.OnClickLis
                 }
             }
 
+
+            @Override
+            public void scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
+                int count = rcv_video_dynamic.getChildCount();
+                Utils.log("scrollVerticallyBy child count: " + count);
+            }
+
             @Override
             public void onPageSelected(int position, boolean isBottom) {
                 if (currentPosition == position) return;
+                int count = rcv_video_dynamic.getChildCount();
+                Utils.log("onPageSelected child count: " + count);
                 videoLog(TAG, "============================================================> onPageSelected() currentPosition: " + currentPosition);
                 VideoModel model = modelList.get(position);
                 videoLog(TAG, "=========> onPageSelected() info: " + model.toString());
