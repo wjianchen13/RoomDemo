@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.roomdemo.test1.TestActivity1;
 import com.example.roomdemo.test2.TestActivity2;
+import com.example.roomdemo.test3.TestActivity3;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -29,5 +30,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, TestActivity2.class));
     }
 
+    /**
+     * ViewPager2 测试
+     */
+    public void onTest3(View v) {
+        startActivity(new Intent(this, TestActivity3.class));
+    }
 
 }

@@ -2,8 +2,14 @@
 
 # 上下切换房间方案
 1. 滑动时房间内容不滚动
-2. 参考
+2. VerticalViewPager参考
    https://github.com/ilpanda/live_demo
+   android快速仿花椒，映客直播上下滑动切换直播间
+   https://blog.csdn.net/duolaimila/article/details/72189790
+   Android - 直播上下滑动布局（1）
+   https://blog.csdn.net/stupid56862/article/details/107774374
+
+
 3. 小视频
 4. 声网秒开
 
