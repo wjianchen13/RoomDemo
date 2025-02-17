@@ -1,11 +1,14 @@
 package com.example.roomdemo.test3;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.roomdemo.R;
@@ -35,11 +38,45 @@ public class TestActivity3 extends AppCompatActivity {
         }
 
         ViewPager2 vp = findViewById(R.id.vp2);
+        vp.setPageTransformer(new MarginPageTransformer(30));
         vp.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+//        vp.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         vp.setOffscreenPageLimit(1);
         TestAdapter3 adapter = new TestAdapter3(this, datas);
         vp.setAdapter(adapter);
 
+//         应用MarginItemDecoration
+//        MarginItemDecoration marginItemDecoration = new MarginItemDecoration(16); // 例如，设置间距为16dp
+//        vp.addItemDecoration(marginItemDecoration);
+
+//        vp.setPageTransformer(new ViewPager2.PageTransformer() {
+//            @Override
+//            public void transformPage(@NonNull View page, float position) {
+//                // 设置间距
+//                int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
+//                ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) page.getLayoutParams();
+//                params.topMargin = margin;
+//                params.bottomMargin = margin;
+//                page.setLayoutParams(params);
+//            }
+//        });
+
+//        vp.setPageTransformer(new ViewPager2.PageTransformer() {
+//            @Override
+//            public void transformPage(@NonNull View page, float position) {
+//                page.setTranslationX(-position * page.getWidth());
+//                float scaleFactor = Math.max(0.85f, 1 - Math.abs(position));
+//                page.setScaleX(scaleFactor);
+//                page.setScaleY(scaleFactor);
+//
+//                // 设置页面边距
+//                if (position > -1 && position < 1) {
+//                    // 设置页面之间的间距
+//                    float verticalMargin = 30;
+//                    page.setTranslationY(verticalMargin * position);
+//                }
+//            }
+//        });
         vp.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -59,13 +96,24 @@ public class TestActivity3 extends AppCompatActivity {
                 super.onPageScrollStateChanged(state);
             }
         });
-        vp.setPageTransformer(new ViewPager2.PageTransformer() {
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(20));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
             public void transformPage(@NonNull View page, float position) {
 //                Utils.log("transformPage page: " + page + "  pageId: " + page.getId() + "  position: " + position);
                 handleChange(page, position);
             }
         });
+        vp.setPageTransformer(compositePageTransformer);
+//        vp.setPageTransformer(new ViewPager2.PageTransformer() {
+//            @Override
+//            public void transformPage(@NonNull View page, float position) {
+////                Utils.log("transformPage page: " + page + "  pageId: " + page.getId() + "  position: " + position);
+//                handleChange(page, position);
+//            }
+//        });
 
     }
 
