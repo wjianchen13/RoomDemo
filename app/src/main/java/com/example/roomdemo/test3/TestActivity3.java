@@ -25,6 +25,7 @@ public class TestActivity3 extends AppCompatActivity {
     private int mCurrentItem;
     private int mLastPosition = -1;
     private TestViewManager mLiveProxy;
+    private ViewPager2 vp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class TestActivity3 extends AppCompatActivity {
             datas.add(bean);
         }
 
-        ViewPager2 vp = findViewById(R.id.vp2);
+        vp = findViewById(R.id.vp2);
         vp.setPageTransformer(new MarginPageTransformer(30));
         vp.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
 //        vp.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
@@ -154,6 +155,19 @@ public class TestActivity3 extends AppCompatActivity {
         mLastPosition = currentItem;
         viewGroup.addView(mLiveProxy.getRootView(), ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mLiveProxy.onAdd(currentItem + "");
+    }
+
+    private int mCurrent = 0;
+
+    /**
+     * 切换到某一页
+     * @param v
+     */
+    public void onTest1(View v) {
+        mCurrent ++;
+        if(mCurrent >= 5)
+            mCurrent = 0;
+        vp.setCurrentItem(mCurrent, false);
     }
 
 }
